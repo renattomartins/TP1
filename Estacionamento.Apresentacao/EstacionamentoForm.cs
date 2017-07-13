@@ -57,5 +57,14 @@ namespace Estacionamento.Apresentacao
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EstacionamentoService proxy = new EstacionamentoService();
+
+            int vagasRestantes = proxy.VagasRestantes();
+
+            MessageBox.Show(String.Format("Número de vagas restantes: {0}", vagasRestantes));
+        }
     }
 }
