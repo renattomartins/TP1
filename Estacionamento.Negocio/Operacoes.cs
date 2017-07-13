@@ -68,6 +68,11 @@ namespace Estacionamento.Negocio
             return CalcularValorEstacionamento(horaEntrada, DateTime.Now);
         }
 
+        public static int VagasRestantes()
+        {
+            return VAGAS_TOTAIS - _estacionamento.Count;
+        }
+
         /// <summary>
         /// Calcula o valor com base no tempo de permanência
         /// </summary>
