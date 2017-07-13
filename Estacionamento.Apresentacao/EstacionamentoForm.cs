@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Estacionamento.Negocio;
+using Estacionamento.Service;
 
 namespace Estacionamento.Apresentacao
 {
@@ -25,8 +25,9 @@ namespace Estacionamento.Apresentacao
             try
             {
 
+                Estacionamento.Service.EstacionamentoService proxy = new Estacionamento.Service.EstacionamentoService();
 
-                Operacoes.Checkin(placa);
+                proxy.Checkin(placa);
 
                 MessageBox.Show(String.Format("Placa '{0}' adicionada.", placa));
                 textBox1.Text = string.Empty;
@@ -44,7 +45,9 @@ namespace Estacionamento.Apresentacao
 
             try
             {
-                var valor = Operacoes.Checkout(placa);
+                Estacionamento.Service.EstacionamentoService proxy = new Estacionamento.Service.EstacionamentoService();
+
+                var valor = proxy.Checkout(placa);
 
                 MessageBox.Show(String.Format("Placa '{0}' valor de R${1}.", placa, valor));
                 textBox1.Text = string.Empty;
